@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends 'base/index.html' %}
+{% block title %} About {% endblock %}
+{% block content %}
+
+<div class="container about_page">
+    <h1 class="mt-5">About page</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Mollitia beatae quidem eaque repellendus nisi sed illo
+        suscipit magnam quaerat perspiciatis. Illo facilis veritatis magni corporis voluptate laborum dolore sunt quo.
+    </p>
+    <div class="row">
+        {% for staff in staff_data %}
+        <div class="col">
+            <div class="card mb-3">
+                <div class="row g-0">
+                    <div class="col-md-4">
+                        <img src="{{staff.staff_image.url}}" class="img-fluid rounded-start" alt="...">
+                    </div>
+                    <div class="col-md-8">
+                        <div class="card-body">
+                            <h5 class="card-title">{{staff.staff_name}} {{staff.staff_mbiemri}}</h5>
+                            <p class="card-text">{{staff.staff_description}}</p>
+                            <p class="card-text"><small class="text-body-secondary">
+                                    {{staff.staff_email}}
+                                </small></p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+{% endblock %}

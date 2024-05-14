@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+{% extends 'base/index.html' %}
+{% load static%}
+{% block title %} Travel {% endblock %}
+{% block content %}
+<!-- nis carousel-->
+<div id="carouselExampleIndicators" class="carousel slide">
+  <div class="carousel-indicators">
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="0" class="active"
+      aria-current="true" aria-label="Slide 1"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="1"
+      aria-label="Slide 2"></button>
+    <button type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide-to="2"
+      aria-label="Slide 3"></button>
+  </div>
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="{% static 'images/img1.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/img2.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+    <div class="carousel-item">
+      <img src="{% static 'images/img3.jpg' %}" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleIndicators" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+<!-- fund carousel -->
+
+
+<!-- Grid -->
+<div class="container text-center">
+  <h1 class="my-3 display-4 text-start">"Wherever you go becomes a part of you somehow."</h1>
+  <hr color="green">
+  <h2 class="my-5 display-5">Where to next?</h2>
+  <div class="row">
+    {% for item in items_value %}
+      {% if forloop.counter0|divisibleby:3 %}
+        </div><div class="row">
+      {% endif %}
+      <div class="col mt-3">
+        <div class="card h-100">
+          <img src="{{item.item_image.url}}" class="card-img-top h-100" alt="...">
+          <div class="card-body">
+            <h5 class="card-title">{{item.item_title}}</h5>
+            <p class="card-text">{{item.item_description}}</p>
+            <a href="{% url 'detail' item.item_id %}" class="btn btn-success">See Details</a>
+          </div>
+        </div>
+      </div>
+      
+    {% endfor %}
+  </div>
+  <nav aria-label="Page navigation example">
+    <ul class="pagination mt-3 justify-content-center">
+      {% if items_value.has_previous %}
+      <li class="page-item"><a class="page-link" href="?page=1">First</a></li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ items_value.previous_page_number }}">Previous</a>
+      </li>
+      {% endif %}
+  
+      <li class="page-item disabled">
+        <span class="page-link">Page {{ items_value.number }} of {{ items_value.paginator.num_pages}}</span>
+      </li>
+  
+      {% if items_value.has_next %}
+      <li class="page-item">
+        <a class="page-link" href="?page={{ items_value.next_page_number }}">Next</a>
+      </li>
+      <li class="page-item">
+        <a class="page-link" href="?page={{ items_value.paginator.num_pages }}">Last</a>
+      </li>
+      {% endif %}
+    </ul>
+  </nav>
+  
+</div>
+
+<!-- fund grid -->
+<div class="container text-center my-5">
+  <h2 class="my-3 display-3">Categorys</h2>
+  <div class="row">
+    {% for category in cat %}
+    <div class="col">
+      <div class="card h-100">
+        <img src="{{category.category_image.url}}" class="card-img-top h-100" alt="...">
+        <div class="card-body">
+          <h5 class="card-title">{{category.category_name}}</h5>
+          <a href="{% url 'category' category.category_id %}" class="btn btn-success">Show More</a>
+        </div>
+      </div>
+    </div>
+    {% endfor %}
+
+  </div>
+</div>
+
+{% endblock %}

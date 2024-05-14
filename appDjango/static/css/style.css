@@ -1,0 +1,42 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-size: 1 rem;
+    line-height: 1.5;
+    letter-spacing: 1px;
+}
+
+.navbar,
+.footer {
+    background-color: #103E2E;
+}
+
+.navbar .nav-link {
+    color: #fff;
+}
+
+.navbar-brand img {
+    width: 100px;
+    height: 50px;
+    object-fit: cover;
+}
+
+.carousel-inner,
+.carousel-inner img {
+    height: 400px;
+    object-fit: cover;
+}
+
+.cover img {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    background-position: center center;
+}
+
+.about_page{
+    height: 59vh;
+}

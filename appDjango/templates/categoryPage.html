@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+{% extends 'base/index.html' %}
+{% load static %}
+{% block title %} Category Products {% endblock %}
+{% block content %}
+<!-- Info Category -->
+<div class="container-fluid px-0 position-relative">
+    <div class="cover">
+        <img src="{{category.category_image.url}}" alt="" class="">
+    </div>
+    <div class="position-absolute w-50 top-50 start-50 translate-middle text-center">
+        <h2 class="text-white display-1">{{category.category_name}}
+        </h2>
+    </div>
+</div>
+<!-- end info category -->
+<!-- Category products -->
+<div class="container my-5">
+    <div class="row">
+        {% for cat_item in categoryItems %} <div class="col-12 col-md-6 col-lg-3 mt-5">
+            <div class="card">
+                <img src="{{cat_item.item_image.url}}" class="card-img-top">
+                <div class="card-body">
+                    <h4 class="card-title">{{cat_item.item_name}}</h4>
+                    <p class="card-text">{{cat_item.item_description}}</p>
+                    <a href="{% url 'detail' cat_item.item_id %}" class=" btn btn-success">Read more</a>
+                </div>
+            </div>
+        </div>
+        {% endfor %}
+    </div>
+</div>
+<!-- end Category products -->
+{% endblock %}

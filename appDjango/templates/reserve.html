@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+{% extends 'base/index.html' %}
+{% block title %} Reserve {% endblock %}
+{% block content %}
+
+<div class="container mb-5">
+    <form action="" method="POST" class="p-5" id="reservation-form">
+        {% csrf_token %}
+        <div class="mb-3">
+            <label for="name" class="form-label">Name</label>
+            <input type="text" name="name_reserve" class="form-control" id="name" placeholder="Your Name">
+        </div>
+        <div class="mb-3">
+            <label for="surname" class="form-label">Surname</label>
+            <input type="text" name="surname_reserve" class="form-control" id="surname" placeholder="Your surname">
+        </div>
+        <div class="mb-3">
+            <label for="email" class="form-label">Email</label>
+            <input type="email" name="email_reserve" class="form-control" id="email" placeholder="name@example.com">
+        </div>
+        <div class="mb-3">
+            <label for="number" class="form-label">Number</label>
+            <input type="text" name="number_reserve" class="form-control" id="number" placeholder="+1234567890">
+        </div>
+        <div class="mb-3">
+            <label for="comment" class="form-label">Comment</label>
+            <textarea class="form-control" name="comment_reserve" id="comment" rows="3"></textarea>
+        </div>
+        <button type="submit" class="btn btn-success">Submit</button>
+    </form>
+</div>
+
+<script>
+    document.getElementById("reservation-form").addEventListener("submit", function(event) {
+        event.preventDefault();
+        alert("Thank you for your reservation!");
+    });
+</script>
+
+{% endblock %}

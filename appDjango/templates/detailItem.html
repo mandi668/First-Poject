@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+{% extends 'base/index.html' %}
+{% load static %}
+{% block title %} Item Detail {% endblock %}
+{% block content %}
+
+<div class="container mb-5">
+    <div class="row mt-5">
+        <div class="col-12 col-md-6">
+            <h2>Description</h2>
+            <p>{{details.item_description}}</p>
+            <a href="{% url 'reserve' %}" class="btn btn-success">Reserve</a>
+        </div>
+        <div class="col-12 col-md-6">
+            <img src="{{details.item_image.url}}" class="img-fluid" alt="">
+        </div>
+    </div>
+</div>
+{% endblock %}
